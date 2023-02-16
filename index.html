@@ -4,7 +4,7 @@
 <head>
 
     <meta charset="UTF-8"/>
-    <title>SkillAPI - Dynamic Editor</title>
+    <title>ProSkillAPI——编辑器 枫溪版</title>
 
     <!-- other scripts are loaded in main.js -->
     <script src="editor/js/loader.js"></script>
@@ -22,7 +22,7 @@
 <!-- Site header -->
 <header>
     <h1>Pro Skill API</h1>
-    <h2>枫溪版编辑器</h2>
+    <h2>枫溪版编辑器 (白魂汉化)</h2>
 </header>
 
 <div id="version">
@@ -36,13 +36,13 @@
 
 <!-- IO Buttons -->
 <div id="io">
-    <p class="ioText">Drop file anywhere to load</p>
-    <button id="saveButton" class="ioButton">Backup All Data</button>
+    <p class="ioText">把配置文件拖到此界面即可加载</p>
+    <button id="saveButton" class="ioButton">备份所有数据</button>
 </div>
 
 <!-- Display when the window is too small -->
 <div id="small">
-    <p>Please enlarge your browser window or zoom out</p>
+    <p>请放大您的浏览器窗口或缩小</p>
 </div>
 
 <div id="main" class="main">
@@ -50,10 +50,10 @@
     <!-- Skill/Class Tabs -->
     <div id="tabSpacer"></div>
     <div id="skillTab" class="tab tabLeft tabActive">
-        Skills
+        技能
     </div>
     <div id="classTab" class="tab tabRight">
-        Classes
+        职业
     </div>
 
     <!-- Skill Content -->
@@ -61,16 +61,16 @@
 
         <!-- Skill list -->
         <select id="skillList" size="30">
-            <option selected="selected">Skill 1</option>
-            <option>+ New Skill</option>
+            <option selected="selected">技能 1</option>
+            <option>+ 新增技能</option>
         </select>
 
         <!-- Effect builder -->
         <div id="builder">
             <h6 id="skillDetails">Details</h6>
             <h6 id="addTrigger">Triggers</h6>
-            <h6 id="saveSkill" class>Save Skill</h6>
-            <h6 id="deleteSkill" class="cancelButton">Delete</h6>
+            <h6 id="saveSkill" class>保存技能</h6>
+            <h6 id="deleteSkill" class="cancelButton">删除技能</h6>
             <div id="builderContent"></div>
         </div>
 
@@ -80,27 +80,27 @@
 
         <!-- Trigger selection -->
         <div id="triggerChooser">
-            <h4>Triggers</h4>
+            <h4>触发器</h4>
 
             <div id="triggerOptions"></div>
 
-            <h5 class="cancelButton">Cancel</h5>
+            <h5 class="cancelButton">取消</h5>
         </div>
 
         <!-- Component selection -->
         <div id="componentChooser">
 
-            <h4>Targets</h4>
+            <h4>目标选择器</h4>
             <div id="targetOptions"></div>
 
-            <h4>Conditions</h4>
+            <h4>触发条件</h4>
             <div id="conditionOptions"></div>
 
-            <h4>Mechanics</h4>
+            <h4>技能效果</h4>
             <div id="mechanicOptions"></div>
 
             <hr/>
-            <h5 class="cancelButton">Cancel</h5>
+            <h5 class="cancelButton">取消</h5>
 
         </div>
     </div>
@@ -110,8 +110,8 @@
 
         <!-- Class list -->
         <select id="classList" size="30">
-            <option selected="selected">Class 1</option>
-            <option>+ New Class</option>
+            <option selected="selected">职业 1</option>
+            <option>+ 新增职业</option>
         </select>
 
         <div id="classForm"></div>
@@ -125,7 +125,7 @@
 </footer>
 
 <div id="badBrowser">
-    <p>Get a real browser! (Use Chrome or Firefox)</p>
+    <p>推荐使用Chrome/Firefox/Edge浏览器访问)</p>
 </div>
 </body>
 

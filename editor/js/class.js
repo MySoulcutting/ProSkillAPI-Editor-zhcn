@@ -13,26 +13,26 @@ function Class(name)
 	
 	// Class data
 	this.data = [
-		new StringValue('Name', 'name', name).setTooltip('The name of the class. This should not contain color codes'),
-		new StringValue('Prefix', 'prefix', '&6' + name).setTooltip('The prefix given to players who profess as the class which can contain color codes'),
-		new StringValue('Group', 'group', 'class').setTooltip('A class group are things such as "race", "class", and "trade". Different groups can be professed through at the same time, one class from each group'),
-		new StringValue('Mana Name', 'mana', '&2Mana').setTooltip('The name the class uses for mana'),
-		new IntValue('Max Level', 'max-level', 40).setTooltip('The maximum level the class can reach. If this class turns into other classes, this will also be the level it can profess into those classes.'),
-		new ListValue('Parent', 'parent', ['None'], 'None').setTooltip('The class that turns into this one. For example, if Fighter turns into Knight, then Knight would have its parent as Fighter'),
-		new ListValue('Permission', 'needs-permission', ['True', 'False'], 'False').setTooltip('Whether or not the class requires a permission to be professed as. The permission would be "skillapi.class.{className}"'),
-        new ByteListValue('Exp Sources', 'exp-source', [ 'Mob', 'Block Break', 'Block Place', 'Craft', 'Command', 'Special', 'Exp Bottle', 'Smelt', 'Quest' ], 273).setTooltip('The experience sources the class goes up from. Most of these only work if "use-exp-orbs" is enabled in the config.yml.'),
-		new AttributeValue('Health', 'health', 20, 0).setTooltip('The amount of health the class has'),
-		new AttributeValue('Mana', 'mana', 20, 0).setTooltip('The amount of mana the class has'),
-		new DoubleValue('Mana Regen', 'mana-regen', 1, 0).setTooltip('The amount of mana the class regens each interval. The interval is in the config.yml and by default is once every second. If you want to regen a decimal amount per second, increase the interval.'),
-		new ListValue('Skill Tree', 'tree', [ 'Basic Horizontal', 'Basic Vertical', 'Level Horizontal', 'Level Vertical', 'Flood', 'Requirement' ], 'Requirement'),
-		new StringListValue('Skills (one per line)', 'skills', []).setTooltip('The skills the class is able to use'),
-		new ListValue('Icon', 'icon', getMaterials, 'Jack O Lantern').setTooltip('The item that represents the class in GUIs'),
-		new IntValue('Icon Data', 'icon-data', 0).setTooltip('The data/durability value of the item that represents the class in GUIs'),
-		new StringListValue('Icon Lore', 'icon-lore', [
+		new StringValue('职业名字(内部)', 'name', name).setTooltip('内部名称,这里不应包含颜色代码！'),
+		new StringValue('显示名字(前缀)', 'prefix', '&6' + name).setTooltip('显示在玩家名的前缀，可以包含颜色代码,显示在变量里的名字'),
+		new StringValue('职业组', 'group', 'class').setTooltip('比如“种族”、“部落”之类的东西。不可重复，直接填职业名称也可以'),
+		new StringValue('法力名称', 'mana', '&2Mana').setTooltip('职业法力的名称 例如：法力值/魔法值'),
+		new IntValue('最高等级', 'max-level', 40).setTooltip('职业所能升到的最高等级，转职后仍可以被引用'),
+		new ListValue('父职业', 'parent', ['None'], 'None').setTooltip('先成为父职业才可以成为该职业 None为不需要 如需添加请将父职业加载至该编辑器'),
+		new ListValue('权限', 'needs-permission', ['True', 'False'], 'False').setTooltip('是否需要相应权限才能成为该职业. 权限格式为 "skillapi.class.{职业名}"'),
+        new ByteListValue('经验来源', 'exp-source', [ '怪物', '方块破坏', '方块放置', '合成', '指令', '特殊(?)', '经验瓶', '冶炼(熔炉烧东西)', '任务' ], 273).setTooltip('职业的经验来源.其中大部分仅在config.yml中的“use-exp-orbs” 启用才可生效!'),
+		new AttributeValue('血量', 'health', 20, 0).setTooltip('职业的初始血量'),
+		new AttributeValue('法力值', 'mana', 20, 0).setTooltip('职业的初始法力值'),
+		new DoubleValue('法力恢复', 'mana-regen', 1, 0).setTooltip('该职业在每隔一段时间内恢复的法力值。间隔在 config.yml 中，默认情况下是每秒一次。如果你想重新设置一个数，可以增加间隔.'),
+		new ListValue('技能树', 'tree', [ 'Basic Horizontal', 'Basic Vertical', 'Level Horizontal', 'Level Vertical', 'Flood', 'Requirement' ], 'Requirement').setTooltip('依次为(从上往下)基础横向 基础纵向 阶梯横向 阶梯纵向 平铺 自定义 (不是很懂 一般默认就好)'),
+		new StringListValue('技能（每行一个）', 'skills', []).setTooltip('该职业可使用的技能'),
+		new ListValue('图标', 'icon', getMaterials, 'Jack O Lantern').setTooltip('显示在GUI里的图标'),
+		new IntValue('图标数据', 'icon-data', 0).setTooltip('耐久度或数据值'),
+		new StringListValue('图标介绍(lore)', 'icon-lore', [
 			'&d' + name
 		]),
-		new StringListValue('Unusable Items', 'blacklist', [ ]).setTooltip('The types of items that the class cannot use (one per line)'),
-		new StringValue('Action Bar', 'action-bar', '').setTooltip('The format for the action bar. Leave blank to use the default formatting.')
+		new StringListValue('不可使用的物品', 'blacklist', [ ]).setTooltip('该职业不能使用的物品（每行一个）'),
+		new StringValue('Action Bar', 'action-bar', '').setTooltip('Action Bar的格式.留空以使用默认格式.')	
 	];
     
     this.updateAttribs(10);
@@ -75,7 +75,7 @@ Class.prototype.createFormHTML = function()
 	var form = document.createElement('form');
 	
 	var header = document.createElement('h4');
-	header.innerHTML = 'Class Details';
+	header.innerHTML = '职业信息编辑';
 	form.appendChild(header);
 	
 	var h = document.createElement('hr');
@@ -108,7 +108,7 @@ Class.prototype.createFormHTML = function()
 	form.appendChild(hr);
 	
 	var save = document.createElement('h5');
-	save.innerHTML = 'Save Class',
+	save.innerHTML = '保存职业',
 	save.classData = this;
 	save.addEventListener('click', function(e) {
 		this.classData.update();
@@ -117,7 +117,7 @@ Class.prototype.createFormHTML = function()
 	form.appendChild(save);
 	
 	var del = document.createElement('h5');
-	del.innerHTML = 'Delete',
+	del.innerHTML = '删除职业',
 	del.className = 'cancelButton';
 	del.addEventListener('click', function(e) {
 		var list = document.getElementById('classList');

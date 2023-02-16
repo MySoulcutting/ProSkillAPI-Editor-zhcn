@@ -25,9 +25,9 @@ const Type = {
  * Available triggers for activating skill effects
  */
 const Trigger = {
-    BLOCK_BREAK: {name: 'Block Break', container: true, construct: TriggerBlockBreak},
+    BLOCK_BREAK: {name: 'Block break', container: true, construct: TriggerBlockBreak},
     BLOCK_PLACE: {name: 'Block Place', container: true, construct: TriggerBlockPlace},
-    CAST: {name: 'Cast', container: true, construct: TriggerCast},
+    CAST: {name: '释放', container: true, construct: TriggerCast},
     CLEANUP: {name: 'Cleanup', container: true, construct: TriggerCleanup},
     CROUCH: {name: 'Crouch', container: true, construct: TriggerCrouch},
     DEATH: {name: 'Death', container: true, construct: TriggerDeath},
@@ -289,7 +289,7 @@ Component.prototype.createBuilderHTML = function (target) {
     if (this.container) {
         var add = document.createElement('div');
         add.className = 'builderButton';
-        add.innerHTML = '+ Add Child';
+        add.innerHTML = '+ 添加子类';
         add.component = this;
         add.addEventListener('click', function (e) {
             activeComponent = this.component;
@@ -471,7 +471,7 @@ Component.prototype.createFormHTML = function () {
 
     var done = document.createElement('h5');
     done.className = 'doneButton';
-    done.innerHTML = 'Done';
+    done.innerHTML = '保存';
     done.component = this;
     done.addEventListener('click', function (e) {
         this.component.update();
@@ -614,7 +614,6 @@ extend('TriggerCast', 'Component');
 
 function TriggerCast() {
     this.super('Cast', Type.TRIGGER, true);
-
     this.description = 'Applies skill effects when a player casts the skill using either the cast command, the skill bar, or click combos.';
 }
 
